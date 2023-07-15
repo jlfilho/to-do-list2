@@ -24,4 +24,8 @@ export class TodoListComponent {
     }
   }
 
+  public setEmitTaskList(item: any){
+    return this.taskList.push({ task: item, checked: false})
+  }
+
 }
