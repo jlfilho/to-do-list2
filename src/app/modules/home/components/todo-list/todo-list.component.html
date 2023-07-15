@@ -1,35 +1,19 @@
 
 <section>
-
 <ul>
-  <li>
-    <input type="checkbox">
-    <input type="text" value="Tarefa 1">
+  <li *ngFor="let item of taskList; let i = index">
+    <input type="checkbox" [(ngModel)]="item.checked">
+
+    <input type="text" [(ngModel)]="item.task">
 
     <button>
       <img src="assets/icons/icon-trash.svg" >
     </button>
+
   </li>
-
-  <li>
-    <input type="checkbox">
-    <input type="text" value="Tarefa 2">
-
-    <button>
-      <img src="assets/icons/icon-trash.svg" >
-    </button>
-  </li>
-
-  <li>
-    <input type="checkbox">
-    <input type="text" value="Tarefa 3">
-
-    <button>
-      <img src="assets/icons/icon-trash.svg" >
-    </button>
-  </li>
-
 </ul>
+
+
 
 </section>
 
