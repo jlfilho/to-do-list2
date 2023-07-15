@@ -13,4 +13,15 @@ export class TodoListComponent {
     { task: "Ir para academia", checked: true}
   ];
 
+  public deleteItemTaskList(index: number){
+    return this.taskList.splice(index, 1);
+  }
+
+  public deleteAllITems() {
+    const confirm = window.confirm("Tem certeza que deseja excluir todas as tarefas?");
+    if(confirm){
+      this.taskList = [];
+    }
+  }
+
 }
