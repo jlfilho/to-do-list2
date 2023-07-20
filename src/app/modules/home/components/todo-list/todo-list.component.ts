@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DoCheck } from '@angular/core';
 import { TaskItem } from '../../model/task-item';
 
 @Component({
@@ -6,12 +6,17 @@ import { TaskItem } from '../../model/task-item';
   templateUrl: './todo-list.component.html',
   styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent {
-  public taskList: Array<TaskItem> = [
-    { task: "Fazer meus exercícios", checked: true},
-    { task: "Limpar casa", checked: false},
-    { task: "Ir para academia", checked: true}
-  ];
+export class TodoListComponent implements DoCheck{
+
+  public taskList: Array<TaskItem> = [ ];
+
+
+  public ngDoCheck(): void {
+    this.taskList.sort(
+      (first, last) => Number(first.checked) - Number(last.checked)
+    );
+
+  }
 
   public deleteItemTaskList(index: number){
     return this.taskList.splice(index, 1);
