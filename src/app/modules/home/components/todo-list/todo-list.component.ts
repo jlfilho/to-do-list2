@@ -8,13 +8,26 @@ import { TaskItem } from '../../model/task-item';
 })
 export class TodoListComponent implements DoCheck{
 
-  public taskList: Array<TaskItem> = [ ];
+  public taskList: Array<TaskItem> =
+  JSON.parse(localStorage.getItem("list") || '[]' );
 
 
   public ngDoCheck(): void {
     this.taskList.sort(
       (first, last) => Number(first.checked) - Number(last.checked)
     );
+
+    localStorage.setItem('list', JSON.stringify(this.taskList));
+
+  }
+
+  public validationInput(task: string, index: number){
+    if(!task.length){
+      const confirm = window.confirm("Task está vazia, deseja excluir?")
+      if(confirm){
+        this.deleteItemTaskList(index);
+      }
+    }
 
   }
 
